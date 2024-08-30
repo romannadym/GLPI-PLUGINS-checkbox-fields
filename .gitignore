@@ -3,5 +3,5 @@ node_modules/
 vendor/
 .gh_token
 composer.lock
+LICENSE
 *.min.*
-
