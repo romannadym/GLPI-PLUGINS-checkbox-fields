@@ -45,7 +45,24 @@ define("PLUGIN_CHEKBOXPRIORITY_MAX_GLPI_VERSION", "10.0.99");
 function plugin_init_chekboxpriority()
 {
     global $PLUGIN_HOOKS;
-
+    // Display fields in any existing tab
+   $PLUGIN_HOOKS['post_item_form']['chekboxpriority'] = [
+        'PluginChekboxpriorityFields',
+        'showForTab'
+    ];
+    $PLUGIN_HOOKS['pre_item_add']['chekboxpriority']['Ticket']  = [
+         'PluginChekboxpriorityCommon',
+         'preItemAdd'
+     ];
+     $PLUGIN_HOOKS['item_add']['chekboxpriority']['Ticket']  = [
+          'PluginChekboxpriorityCommon',
+          'itemAdd'
+      ];
+      $PLUGIN_HOOKS['item_update']['chekboxpriority']['Ticket']  = [
+           'PluginChekboxpriorityCommon',
+           'itemUpdate'
+       ];
+  //  Plugin::registerClass('PluginChekboxpriorityFields', ['addtabon' => 'Ticket']);
     $PLUGIN_HOOKS['csrf_compliant']['chekboxpriority'] = true;
 }
 
